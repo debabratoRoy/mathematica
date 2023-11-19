@@ -1,0 +1,359 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14678,        349]
+NotebookOptionsPosition[     14192,        332]
+NotebookOutlinePosition[     14592,        348]
+CellTagsIndexPosition[     14549,        345]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Riemann", " ", "Sum", " ", "demonstration"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"define", " ", "function", " ", "and", " ", "interval"}], " ", 
+   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", "x_", "]"}], ":=", 
+     RowBox[{"4", "-", 
+      SuperscriptBox["x", "2"]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"a", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "define", " ", "width", " ", "of", " ", "each", " ", "rectangular"}], 
+     " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"\[Del]", "x"}], "=", 
+       RowBox[{"N", "[", 
+        FractionBox[
+         RowBox[{"(", 
+          RowBox[{"b", "-", "a"}], ")"}], "n"], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"get", " ", 
+        RowBox[{"w", "'"}], "s", " ", "used", " ", "for", " ", "drawing", " ",
+         "rectangles"}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"w1", ",", "w2", ",", "w3", ",", "w4"}], "}"}], "=", 
+       RowBox[{"Switch", "[", 
+        RowBox[{"type", ",", "\[IndentingNewLine]", "\"\<Left\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "0", ",", "1", ",", "0"}], "}"}], ",", 
+         "\[IndentingNewLine]", "\"\<Middle\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{"0.5", ",", "0.5", ",", "0.5", ",", "0.5"}], "}"}], ",", 
+         "\[IndentingNewLine]", "\"\<Right\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1", ",", "0", ",", "1"}], "}"}], ",", 
+         "\[IndentingNewLine]", "\"\<Trapezoid\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1", ",", "1", ",", "0"}], "}"}]}], 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "compute", " ", "Reimann", " ", "sum", " ", "according", " ", "to", 
+        " ", "method"}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"sum", "=", 
+       RowBox[{"Switch", "[", 
+        RowBox[{"type", ",", "\[IndentingNewLine]", "\"\<Left\>\"", ",", 
+         RowBox[{
+          RowBox[{"Sum", "[", 
+           RowBox[{
+            RowBox[{"f", "[", 
+             RowBox[{"a", "+", 
+              RowBox[{"i", " ", 
+               RowBox[{"\[Del]", "x"}]}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "0", ",", 
+              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], 
+          RowBox[{"\[Del]", "x"}]}], ",", "\[IndentingNewLine]", 
+         "\"\<Middle\>\"", ",", 
+         RowBox[{
+          RowBox[{"Sum", "[", 
+           RowBox[{
+            RowBox[{"f", "[", 
+             RowBox[{"a", "+", 
+              FractionBox[
+               RowBox[{"\[Del]", "x"}], "2"], "+", 
+              RowBox[{"i", " ", 
+               RowBox[{"\[Del]", "x"}]}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "0", ",", 
+              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], 
+          RowBox[{"\[Del]", "x"}]}], ",", "\[IndentingNewLine]", 
+         "\"\<Right\>\"", ",", 
+         RowBox[{
+          RowBox[{"Sum", "[", 
+           RowBox[{
+            RowBox[{"f", "[", 
+             RowBox[{"a", "+", 
+              RowBox[{"i", " ", 
+               RowBox[{"\[Del]", "x"}]}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], 
+          RowBox[{"\[Del]", "x"}]}], ",", "\[IndentingNewLine]", 
+         "\"\<Trapezoid\>\"", ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Sum", "[", 
+           RowBox[{
+            FractionBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"f", "[", 
+                RowBox[{"a", "+", 
+                 RowBox[{"i", " ", 
+                  RowBox[{"\[Del]", "x"}]}]}], "]"}], "+", 
+               RowBox[{"f", "[", 
+                RowBox[{"a", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"i", "+", "1"}], ")"}], " ", 
+                  RowBox[{"\[Del]", "x"}]}]}], "]"}]}], ")"}], "2"], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "0", ",", 
+              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], 
+          RowBox[{"\[Del]", "x"}]}]}], "\[IndentingNewLine]", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "output", " ", "layout", " ", "uses", " ", "nested", " ", "grids"}], 
+       " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"Grid", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Grid", "[", 
+            RowBox[{"{", 
+             RowBox[{"{", 
+              RowBox[{"\"\<Riemann Sum\>\"", ",", 
+               RowBox[{"Panel", "[", "sum", "]"}]}], "}"}], "}"}], "]"}], ",",
+            "\[IndentingNewLine]", 
+           RowBox[{"Plot", "[", 
+            RowBox[{
+             RowBox[{"f", "[", "x", "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"x", ",", "a", ",", "b"}], "}"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+             RowBox[{"ImageSize", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"400", ",", "400"}], "}"}]}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"(*", " ", 
+              RowBox[{
+              "use", " ", "epilog", " ", "to", " ", "draw", " ", 
+               "rectangles"}], " ", "*)"}], "\[IndentingNewLine]", 
+             RowBox[{"Epilog", "\[Rule]", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"Line", "[", 
+                 RowBox[{"{", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"L", "=", 
+                    RowBox[{"a", "+", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"i", "-", "1"}], ")"}], 
+                    RowBox[{"\[Del]", "x"}]}]}]}], ",", "0"}], "}"}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"R", "=", 
+                    RowBox[{"a", "+", 
+                    RowBox[{"i", " ", 
+                    RowBox[{"\[Del]", "x"}]}]}]}], ",", "0"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"R", ",", 
+                    RowBox[{
+                    RowBox[{"w1", " ", 
+                    RowBox[{"f", "[", "L", "]"}]}], "+", " ", 
+                    RowBox[{"w2", " ", 
+                    RowBox[{"f", "[", "R", "]"}]}]}]}], "}"}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{"L", ",", 
+                    RowBox[{
+                    RowBox[{"w3", " ", 
+                    RowBox[{"f", "[", "L", "]"}]}], "+", 
+                    RowBox[{"w4", " ", 
+                    RowBox[{"f", "[", "R", "]"}]}]}]}], "}"}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{"L", ",", "0"}], "}"}]}], "\[IndentingNewLine]", 
+                  "}"}], "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}]}], 
+            "\[IndentingNewLine]", "]"}]}], "}"}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"grid", " ", "options"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Frame", "\[Rule]", "None"}], ",", 
+        RowBox[{"Spacings", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", " ", "1"}], "}"}]}], ",", 
+        RowBox[{"Alignment", "\[Rule]", "Left"}]}], "\[IndentingNewLine]", 
+       "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{"manipulate", " ", "controllers"}], " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"n", ",", "10", ",", "\"\<No. Of Rectangles\>\""}], "}"}], 
+       ",", "1", ",", "100", ",", "1", ",", "\[IndentingNewLine]", 
+       RowBox[{"Appearance", "\[Rule]", "\"\<Labled\>\""}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"type", ",", "\"\<Left\>\"", ",", "\"\<Method\>\""}], "}"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<Left\>\"", ",", "\"\<Middle\>\"", ",", "\"\<Right\>\"", ",", 
+         "\"\<Trapezoid\>\""}], "}"}]}], "\[IndentingNewLine]", "}"}]}], 
+    "\[IndentingNewLine]", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.799130208510594*^9, 3.79913039959594*^9}, {
+   3.799130455757949*^9, 3.79913067739544*^9}, {3.799132871235835*^9, 
+   3.799133280040842*^9}, {3.799133310924493*^9, 3.799133419145783*^9}, {
+   3.799133455040807*^9, 3.7991335176980743`*^9}, {3.799133548723462*^9, 
+   3.79913392718666*^9}, {3.7991339758421288`*^9, 3.799134250546479*^9}, {
+   3.799134337697321*^9, 3.799134343422986*^9}, 3.7991343832350197`*^9},
+ CellLabel->"In[5]:=",ExpressionUUID->"cac42fee-6140-4987-8805-a14a7a5270f0"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`n$$ = 18, $CellContext`type$$ = "Left", 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`n$$], 10, "No. Of Rectangles"}, 1, 100, 1}, {{
+       Hold[$CellContext`type$$], "Left", "Method"}, {
+      "Left", "Middle", "Right", "Trapezoid"}}}, Typeset`size$$ = {
+    566., {197.1875, 202.8125}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`n$$ = 10, $CellContext`type$$ = "Left"}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       Del[$CellContext`x] = 
+        N[($CellContext`b - $CellContext`a)/$CellContext`n$$]; \
+{$CellContext`w1, $CellContext`w2, $CellContext`w3, $CellContext`w4} = 
+        Switch[$CellContext`type$$, "Left", {1, 0, 1, 0}, "Middle", {0.5, 0.5,
+           0.5, 0.5}, "Right", {0, 1, 0, 1}, "Trapezoid", {0, 1, 1, 
+          0}]; $CellContext`sum = Switch[$CellContext`type$$, "Left", Sum[
+            $CellContext`f[$CellContext`a + $CellContext`i 
+              Del[$CellContext`x]], {$CellContext`i, 0, $CellContext`n$$ - 1}]
+            Del[$CellContext`x], "Middle", Sum[
+            $CellContext`f[$CellContext`a + 
+             Del[$CellContext`x]/2 + $CellContext`i 
+              Del[$CellContext`x]], {$CellContext`i, 0, $CellContext`n$$ - 1}]
+            Del[$CellContext`x], "Right", Sum[
+            $CellContext`f[$CellContext`a + $CellContext`i 
+              Del[$CellContext`x]], {$CellContext`i, 1, $CellContext`n$$}] 
+          Del[$CellContext`x], "Trapezoid", 
+          Sum[($CellContext`f[$CellContext`a + $CellContext`i 
+                
+                Del[$CellContext`x]] + $CellContext`f[$CellContext`a + \
+($CellContext`i + 1) Del[$CellContext`x]])/
+            2, {$CellContext`i, 0, $CellContext`n$$ - 1}] 
+          Del[$CellContext`x]]; Grid[{{
+           Grid[{{"Riemann Sum", 
+              Panel[$CellContext`sum]}}], 
+           Plot[
+            $CellContext`f[$CellContext`x], {$CellContext`x, $CellContext`a, \
+$CellContext`b}, AspectRatio -> 1, ImageSize -> {400, 400}, Epilog -> Table[
+              
+              Line[{{$CellContext`L = $CellContext`a + ($CellContext`i - 1) 
+                   Del[$CellContext`x], 
+                 0}, {$CellContext`R = $CellContext`a + $CellContext`i 
+                   Del[$CellContext`x], 
+                 0}, {$CellContext`R, $CellContext`w1 \
+$CellContext`f[$CellContext`L] + $CellContext`w2 \
+$CellContext`f[$CellContext`R]}, {$CellContext`L, $CellContext`w3 \
+$CellContext`f[$CellContext`L] + $CellContext`w4 \
+$CellContext`f[$CellContext`R]}, {$CellContext`L, 0}}], {$CellContext`i, 
+               1, $CellContext`n$$}]]}}, Frame -> None, Spacings -> {1, 1}, 
+         Alignment -> Left]), 
+      "Specifications" :> {{{$CellContext`n$$, 10, "No. Of Rectangles"}, 1, 
+         100, 1, Appearance -> 
+         "Labled"}, {{$CellContext`type$$, "Left", "Method"}, {
+         "Left", "Middle", "Right", "Trapezoid"}}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{613., {255.6875, 261.3125}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.799134255010425*^9, 3.7991344153999987`*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"6db921e6-74a1-49d0-b87f-8fbc9255c4b4"]
+}, Open  ]]
+},
+WindowSize->{606., 658.5},
+WindowMargins->{{Automatic, 57.75}, {Automatic, 30.75}},
+FrontEndVersion->"12.1 for Linux x86 (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c4fd2a01-4223-4891-9759-41f34342a5b1"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 9467, 227, 1074, "Input",ExpressionUUID->"cac42fee-6140-4987-8805-a14a7a5270f0"],
+Cell[10050, 251, 4126, 78, 536, "Output",ExpressionUUID->"6db921e6-74a1-49d0-b87f-8fbc9255c4b4"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
